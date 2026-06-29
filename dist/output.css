@@ -1,0 +1,28 @@
+/*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.mx-auto {
+  margin-inline: auto;
+}
+.mb-\[200px\] {
+  margin-bottom: 200px;
+}
+.flex {
+  display: flex;
+}
+.h-\[400px\] {
+  height: 400px;
+}
+.w-\[800px\] {
+  width: 800px;
+}
+.max-w-\[1600px\] {
+  max-width: 1600px;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.text-right {
+  text-align: right;
+}
