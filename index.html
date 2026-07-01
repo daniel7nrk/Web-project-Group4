@@ -63,6 +63,7 @@
     const container = document.getElementById('animation-container');
     const stickyBoxes = document.querySelectorAll('.sticky-box');
     const redBox = document.querySelector('.red');
+    const leftGreenBox = document.querySelector('.greenleft');
 
     let metrics = [];
 
@@ -90,10 +91,11 @@
         const redHasHitTop = redRect.top <= 0;
 
         metrics.forEach(item => {
+            const isGreenLeft = item.element === leftGreenBox;
             const normalElementTop = containerRect.top + (containerRect.height * item.topPercent);
 
             if (redHasHitTop) {
-                item.element.classList.remove('is-sticky');
+                // item.element.classList.remove('is-sticky');
                 item.element.style.position = 'absolute';
                 item.element.style.top = `${item.topPercent * 100}%`;
                 item.element.style.left = `${item.initialLeftPercent * 100}%`;
