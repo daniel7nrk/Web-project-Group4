@@ -1,152 +1,123 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <script src="https://cdn.tailwindcss.com"></script>
-     <script src="app.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        .is-sticky {
+            position: fixed !important;
+            top: 0 !important;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-white h-[300vh]">
 
-    
+<div id="animation-container" class="relative mx-auto w-full aspect-[16/10] mt-24">
+    <div class="text absolute inset-0 flex items-center justify-center text-6xl font-semibold text-center z-[60] text-white pointer-events-none">
+        We help you set <br>
+        focus and gain <br>
+        impact. By adding <br>
+        to the conversation, <br>
+        not the noise.
+    </div>
 
-    
-    
-    
-     <div class="relative mx-auto w-full aspect-[16/10] mt-24">
-        <div class="absolute inset-0 flex items-center justify-center text-6xl font-semibold text-center z-[60] text-white">
-            We help you set <br>
-            focus and gain <br>
-            impact. By adding <br>
-            to the conversation, <br>
-            not the noise.
-        </div>
+    <img
+        src="./img/yellowbox.png"
+        alt="yellowbox"
+        data-top="0.0375" 
+        class="sticky-box yellow absolute right-[55%] top-[3.75%] w-[48%] h-auto z-20">
+        
+    <img
+        src="./img/pinkbox.png"
+        alt="pinkbox"
+        data-top="0.03"
+        class="sticky-box pink absolute left-[36%] top-[3%] w-[15%] h-auto z-10">
 
-    
-        <img
-            src="./img/yellowbox.png"
-            alt="yellowbox"
-            class="absolute right-[55%] top-15 w-[48%] h-auto z-20">
+    <img
+        src="./img/bluebox.png"
+        alt="bluebox"
+        data-top="0.11"
+        class="sticky-box blue absolute left-[36.6%] top-[11%] w-[45%] h-auto z-50">
+        
+    <img
+        src="./img/left-greenbox.png"
+        alt="left-greenbox"
+        data-top="0.12"
+        class="sticky-box greenleft absolute left-[15%] top-[12%] w-[38%] h-auto z-40">
+        
+    <img
+        src="./img/right-greenbox.png"
+        alt="right-greenbox"
+        class="greenright absolute right-0 top-[25%] w-[32%] h-auto z-10">
+
+    <img
+        src="./img/redbox.png"
+        alt="redbox"
+        class="red absolute left-[7.8%] w-[48%] h-auto top-[55.3%] z-30">
+</div>
+
+<script>
+    const container = document.getElementById('animation-container');
+    const stickyBoxes = document.querySelectorAll('.sticky-box');
+    const redBox = document.querySelector('.red');
+
+    let metrics = [];
+
+    function cacheMetrics() {
+        metrics = Array.from(stickyBoxes).map(box => {
+            const rect = box.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
             
-        <img
-            src="./img/pinkbox.png"
-            alt="pinkbox"
-            class="absolute left-[36%] top-[3%] w-[15%] h-auto ">
+            return {
+                element: box,
+                initialLeftPercent: (rect.left - containerRect.left) / containerRect.width,
+                widthPercent: rect.width / containerRect.width,
+                topPercent: parseFloat(box.getAttribute('data-top'))
+            };
+        });
+    }
 
-        <img
-            src="./img/bluebox.png"
-            alt="bluebox"
-            class="absolute left-[36.6%] top-[11%] w-[45%] h-auto z-50">
-        <img
-            src="./img/left-greenbox.png"
-            alt="left-greenbox"
-            class="absolute left-[15%] top-[12%] w-[38%] h-auto z-40">
-        <img
-            src="./img/right-greenbox.png"
-            alt="right-greenbox"
-            class="absolute right-0 top-[25%] w-[32%] h-auto ">
-    
-        <img
-            src="./img/redbox.png"
-            alt="redbox"
-            class="absolute left-[7.8%] w-[48%] h-auto top-[55.3%] z-30">
-    
-    </div>
+    cacheMetrics();
+    window.addEventListener('resize', cacheMetrics);
 
-    
+    window.addEventListener('scroll', () => {
+        const containerRect = container.getBoundingClientRect();
+        const redRect = redBox.getBoundingClientRect();
 
-    
+        const redHasHitTop = redRect.top <= 0;
 
-    
-    <div class="grid grid-cols-2 max-w-[1100px] mx-auto gap-x-40 mb-[200px] mt-[400px]">
+        metrics.forEach(item => {
+            const normalElementTop = containerRect.top + (containerRect.height * item.topPercent);
 
-         <div class="text-5xl font-semibold flex flex-col gap-[50px]">
-            <h1>Brand strategy</h1>
-
-            <h1>Corporate Identity & Website development</h1>
-
-            <h1>SEO & copywriting</h1>
-
-            <h1>Media Relations</h1>
-
-            <h1>Digital marketing & content production</h1>
-
-            <h1>Influencer relations</h1>
-         </div>
-
-        <div class="mt-10">
-           <img src="./img/herobox-green.png" alt="herobox-green">
-        </div>
-        
-    </div>
-
-    <div class="relative mb-[100px]">
-        <div class="">
-          <img src="./img/footerbox.png" alt="footer-box">
-        </div>
-        
-        <div class="absolute inset-y-80 right-80 text-2xl font-semibold text-right">
-            <h1><a href="https://acehotel.com">Ace Hotel</a></h1>
-            <h1><a href="https://armedangels.com">ARMEDANGELS</a></h1>
-            <h1><a href="https://berlindesignweek.com">BERLIN DESIGN WEEK</a> </h1>
-            <h1><a href="https://berlinerberg.com">Berliner Berg</a> </h1>
-            <h1><a href="https://instagram.com/biteclubberlin/">BITE CLUB</a> </h1>
-            <h1><a href="https://budweiserbudvar.com">Budweiser Budvar</a> </h1>
-            <h1><a href="https://instagram.com/chungkingnodles/">ChungKing Noodle</a> </h1>
-            <h1><a href="">Designpreis Brandenburg</a> </h1>
-            <h1><a href="">Die Techniker</a> </h1>
-            <h1><a href="">European Street Food Awards</a> </h1>
-            <h1><a href="">Grundmann Dentistry</a> </h1>
-            <h1><a href="">HORNBACH Werkstück</a> </h1>
-            <h1><a href="">HORNBACH macht Schule</a> </h1>
-            <h1><a href="">Kopka </a></h1>
-            <h1><a href="">KLH Maßschuhe </a></h1>
-            <h1><a href="">Lode & Stijn </a></h1>
-            <h1><a href="">Luya </a></h1>
-            <h1><a href="">MEISSEN </a></h1>
-            <h1><a href="">Motel Beer & Coffee </a></h1>
-            <h1><a href="">PAPER & TEA </a></h1>
-            <h1><a href="">rocket & basil </a></h1>
-            <h1><a href="">Seeberger Gruppe </a></h1>
-            <h1><a href="">Shiori </a></h1>
-            <h1><a href="">SPOC Magazin </a></h1>
-            <h1><a href="">stocubo </a></h1>
-            <h1><a href="">STUR </a></h1>
-            <h1><a href="">World of Coffee </a></h1>
-            <h1><a href="">yamo </a></h1>
-
-        </div>
-        
-    </div>
-    
-    <div class="max-w-[1600px] mx-auto w-[800px] h-[400px] mb-[200px]">
-            <img src="./img/footerbox-red.png" alt="footerbox-red">
-        </div>
-    
-    <div class="flex justify-between ml-8 mr-8 font-bold text-xl">
-        <div>Agentur Baumeister <br>
-        Böckhstraße 13 <br>
-        10967 Berlin
-        </div>
-        <div>hallo@agentur-baumeister.com <br>
-        +49 (0)30 - 490 827 87
-        </div>
-        <div>
-            LinkedIn
-        </div>
-        <div>
-            Instagram
-        </div>
-        <div>
-            Impressum
-            Datenschutz`
-        </div>
-    </div>
+            if (redHasHitTop) {
+                item.element.classList.remove('is-sticky');
+                item.element.style.position = 'absolute';
+                item.element.style.top = `${item.topPercent * 100}%`;
+                item.element.style.left = `${item.initialLeftPercent * 100}%`;
+                item.element.style.width = `${item.widthPercent * 100}%`;
+                item.element.style.transform = `translateY(${redRect.top}px)`;
+            } 
+            else if (normalElementTop <= 0) {
+                item.element.classList.add('is-sticky');
+                item.element.style.transform = 'none'; 
+                
+                item.element.style.left = `${containerRect.left + (item.initialLeftPercent * containerRect.width)}px`;
+                item.element.style.width = `${item.widthPercent * containerRect.width}px`;
+            } 
+            else {
+                item.element.classList.remove('is-sticky');
+                item.element.style.position = 'absolute';
+                item.element.style.top = `${item.topPercent * 100}%`;
+                item.element.style.left = `${item.initialLeftPercent * 100}%`;
+                item.element.style.width = `${item.widthPercent * 100}%`;
+                item.element.style.transform = 'none';
+            }
+        });
+    });
+</script>
+     
 </body>
-</html> 
-
-
-
-
-
+</html>
