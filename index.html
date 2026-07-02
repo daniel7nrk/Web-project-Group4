@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Scroll Animation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
         .is-sticky {
             position: fixed !important;
             top: 0 !important;
-        }
-        .is-sticky2 {
-          position : fixed !important;
-          top: 0.5 !important;
         }
     </style>
 </head>
@@ -50,7 +46,7 @@
         src="./img/left-greenbox.png"
         alt="left-greenbox"
         data-top="0.12"
-        class="greenleft absolute left-[15%] top-[12%] w-[38%] h-auto z-40">
+        class="sticky-box greenleft absolute left-[15%] top-[12%] w-[38%] h-auto z-40">
         
     <img
         src="./img/right-greenbox.png"
@@ -73,10 +69,15 @@
     let metrics = [];
 
     function cacheMetrics() {
+        const containerRect = container.getBoundingClientRect();
+        
+        stickyBoxes.forEach(box => {
+            box.style.position = '';
+            box.style.transform = '';
+        });
+
         metrics = Array.from(stickyBoxes).map(box => {
             const rect = box.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
-            
             return {
                 element: box,
                 initialLeftPercent: (rect.left - containerRect.left) / containerRect.width,
@@ -92,28 +93,41 @@
     window.addEventListener('scroll', () => {
         const containerRect = container.getBoundingClientRect();
         const redRect = redBox.getBoundingClientRect();
-        const leftGreenRect = leftGreenBox.getBoundingClientRect();
-
+        
+        const greenMetrics = metrics.find(m => m.element === leftGreenBox);
+        const greenNormalTop = containerRect.top + (containerRect.height * (greenMetrics?.topPercent || 0));
+        
         const redHasHitTop = redRect.top <= 0;
-        const leftGreenHitTop = leftGreenRect.top <= 0;
+        const leftGreenHitTop = greenNormalTop <= 0;
 
         metrics.forEach(item => {
-            const isGreenLeft = item.element === leftGreenBox;
             const normalElementTop = containerRect.top + (containerRect.height * item.topPercent);
 
             if (redHasHitTop) {
+                if (item.element === yellowBox) {
+                    const yOffset = containerRect.height * ((greenMetrics?.topPercent || 0) - item.topPercent);
+                    item.element.style.transform = `translateY(${yOffset}px)`;
+                } else {
+                    item.element.style.position = 'absolute';
+                    item.element.style.top = `${item.topPercent * 100}%`;
+                    item.element.style.left = `${item.initialLeftPercent * 100}%`;
+                    item.element.style.width = `${item.widthPercent * 100}%`;
+                    item.element.style.transform = `translateY(${redRect.top}px)`;
+                }
+            } 
+            else if (leftGreenHitTop && item.element === yellowBox) {
+                item.element.classList.remove('is-sticky');
                 item.element.style.position = 'absolute';
                 item.element.style.top = `${item.topPercent * 100}%`;
                 item.element.style.left = `${item.initialLeftPercent * 100}%`;
                 item.element.style.width = `${item.widthPercent * 100}%`;
-                item.element.style.transform = `translateY(${redRect.top}px)`;
-            } 
-
-          
+                
+                const yOffset = containerRect.height * ((greenMetrics?.topPercent || 0) - item.topPercent);
+                item.element.style.transform = `translateY(${yOffset}px)`;
+            }
             else if (normalElementTop <= 0) {
                 item.element.classList.add('is-sticky');
                 item.element.style.transform = 'none'; 
-                
                 item.element.style.left = `${containerRect.left + (item.initialLeftPercent * containerRect.width)}px`;
                 item.element.style.width = `${item.widthPercent * containerRect.width}px`;
             } 
@@ -127,57 +141,6 @@
             }
         });
     });
-
-
- function yellowMetrics (){
-    const yellowRect = yellowBox.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-
-    return {
-                element: yellowBox,
-                initialLeftPercent: (yellowRect.left - containerRect.left) / containerRect.width,
-                widthPercent: yellowRect.width / containerRect.width,
-                topPercent: parseFloat(yellowBox.getAttribute('data-top'))
-            };
-
- }
-   yellowMetrics();
-   window.addEventListener('resize', yellowMetrics);
-
-    window.addEventListener('scroll', () => {
-        const containerRect = container.getBoundingClientRect();
-        const leftGreenRect = leftGreenBox.getBoundingClientRect();
-        const leftGreenHitTop = leftGreenRect.top <= 0;
-
-        if (leftGreenHitTop) {
-                // item.element.classList.remove('is-sticky');
-                    yellowBox.style.position = 'absolute'; 
-                    yellowBox.style.top = `${yellowBox.topPercent * 100}%`;
-                    yellowBox.style.left = `${yellowBox.initialLeftPercent * 100}%`;
-                    yellowBox.style.width = `${yellowBox.widthPercent * 100}%`;
-                    yellowBox.style.transform = `translateY(${leftGreenRect.top}px)`;
-
-            } 
-
-        // else (normalElementTop <= 0) {
-        //         item.element.classList.add('is-sticky');
-        //         item.element.style.transform = 'none'; 
-                
-        //         item.element.style.left = `${containerRect.left + (item.initialLeftPercent * containerRect.width)}px`;
-        //         item.element.style.width = `${item.widthPercent * containerRect.width}px`;
-        //     } 
-
-        // else if (leftGreenRect.top <= 0.5) {
-        //   leftGreenBox.classList.add('is-sticky2');
-        //   leftGreenBox.style.transform = 'none'; 
-                
-        //   leftGreenBox.style.left = `${containerRect.left + (leftGreenBox.initialLeftPercent * containerRect.width)}px`;
-        //   leftGreenBox.style.width = `${leftGreenBox.widthPercent * containerRect.width}px`;
-        // }
-    });
-
-    
 </script>
-     
 </body>
 </html>
