@@ -95,7 +95,7 @@
             const normalElementTop = containerRect.top + (containerRect.height * item.topPercent);
 
             if (redHasHitTop) {
-                // item.element.classList.remove('is-sticky');
+                
                 item.element.style.position = 'absolute';
                 item.element.style.top = `${item.topPercent * 100}%`;
                 item.element.style.left = `${item.initialLeftPercent * 100}%`;
