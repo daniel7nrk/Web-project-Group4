@@ -16,13 +16,13 @@
 <body class="bg-white h-[300vh]">
 
 <div id="animation-container" class="relative mx-auto w-full aspect-[16/10] mt-24 z-10 mb-[50%]">
-    <div class="text absolute inset-0 flex items-center justify-center text-6xl font-semibold text-center z-[60] text-white pointer-events-none">
-        We help you set <br>
-        focus and gain <br>
-        impact. By adding <br>
-        to the conversation, <br>
-        not the noise.
+    <div class="absolute inset-0 flex items-center justify-center text-center z-[60] text-black pointer-events-none font-semibold sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+        We help you set focus<br>
+        and gain impact. By adding<br>
+        to the conversation,<br>
+        not the noise.<br>
     </div>
+</div>
 
     <img
         src="./img/yellowbox.png"
@@ -56,12 +56,11 @@
     <img
         src="./img/redbox.png"
         alt="redbox"
-        class="red absolute left-[7.8%] w-[48%] h-auto top-[55.3%] z-30">
+        class="red absolute left-[7.8%] w-[48%] h-auto top-[55.3%] md:top-[31.4%] z-30">
 
         <div class="bg-white h-[30vh] mb-10 z-[70] absolute inset-0 top-[105%]"></div>
         
 </div>
-
 
 
 <script>
@@ -109,34 +108,22 @@
                     item.element.style.transform = `translateY(${yOffset}px)`;
                 } else {
                     item.element.style.position = 'absolute';
-                    item.element.style.top = `${item.topPercent * 100}%`;
-                    item.element.style.left = `${item.initialLeftPercent * 100}%`;
-                    item.element.style.width = `${item.widthPercent * 100}%`;
                     item.element.style.transform = `translateY(${redRect.top}px)`;
                 }
             } 
             else if (leftGreenHitTop && item.element === yellowBox) {
                 item.element.classList.remove('is-sticky');
                 item.element.style.position = 'absolute';
-                item.element.style.top = `${item.topPercent * 100}%`;
-                item.element.style.left = `${item.initialLeftPercent * 100}%`;
-                item.element.style.width = `${item.widthPercent * 100}%`;
-                
                 const yOffset = containerRect.height * ((greenMetrics?.topPercent || 0) - item.topPercent);
                 item.element.style.transform = `translateY(${yOffset}px)`;
             }
             else if (normalElementTop <= 0) {
                 item.element.classList.add('is-sticky');
                 item.element.style.transform = 'none'; 
-                item.element.style.left = `${containerRect.left + (item.initialLeftPercent * containerRect.width)}px`;
-                item.element.style.width = `${item.widthPercent * containerRect.width}px`;
             } 
             else {
                 item.element.classList.remove('is-sticky');
                 item.element.style.position = 'absolute';
-                item.element.style.top = `${item.topPercent * 100}%`;
-                item.element.style.left = `${item.initialLeftPercent * 100}%`;
-                item.element.style.width = `${item.widthPercent * 100}%`;
                 item.element.style.transform = 'none';
             }
         });
