@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./src/output.css" rel="stylesheet">
+      <style>
+        .is-sticky {
+            position: fixed !important;
+            top: 0 !important;
+        }
+    </style>
 </head>
 <body class="bg-[#EFECEA]">
     <div id="header"></div>
@@ -25,5 +31,71 @@
         loadComponents('hero', 'src/sections/hero.html');
         loadComponents('footer', 'src/sections/footer.html');
     }
+
+    //scroll script
+    const container = document.getElementById('animation-container');
+    const stickyBoxes = document.querySelectorAll('.sticky-box');
+    const redBox = document.querySelector('.red');
+    const leftGreenBox = document.querySelector('.greenleft');
+    const yellowBox = document.querySelector('.yellow');
+
+    let metrics = [];
+
+    function cacheMetrics() {
+        const containerRect = container.getBoundingClientRect();
+
+        metrics = Array.from(stickyBoxes).map(box => {
+            const rect = box.getBoundingClientRect();
+            return {
+                element: box,
+                initialLeftPercent: (rect.left - containerRect.left) / containerRect.width,
+                widthPercent: rect.width / containerRect.width,
+                topPercent: parseFloat(box.getAttribute('data-top'))
+            };
+        });
+    }
+
+    cacheMetrics();
+    window.addEventListener('resize', cacheMetrics);
+
+    window.addEventListener('scroll', () => {
+        const containerRect = container.getBoundingClientRect();
+        const redRect = redBox.getBoundingClientRect();
+        
+        const greenMetrics = metrics.find(m => m.element === leftGreenBox);
+        const greenNormalTop = containerRect.top + (containerRect.height * (greenMetrics?.topPercent || 0));
+        
+        const redHasHitTop = redRect.top <= 0;
+        const leftGreenHitTop = greenNormalTop <= 0;
+
+        metrics.forEach(item => {
+            const normalElementTop = containerRect.top + (containerRect.height * item.topPercent);
+
+            if (redHasHitTop) {
+                if (item.element === yellowBox) {
+                    const yOffset = containerRect.height * ((greenMetrics?.topPercent || 0) - item.topPercent);
+                    item.element.style.transform = `translateY(${yOffset}px)`;
+                } else {
+                    item.element.style.position = 'absolute';
+                    item.element.style.transform = `translateY(${redRect.top}px)`;
+                }
+            } 
+            else if (leftGreenHitTop && item.element === yellowBox) {
+                item.element.classList.remove('is-sticky');
+                item.element.style.position = 'absolute';
+                const yOffset = containerRect.height * ((greenMetrics?.topPercent || 0) - item.topPercent);
+                item.element.style.transform = `translateY(${yOffset}px)`;
+            }
+            else if (normalElementTop <= 0) {
+                item.element.classList.add('is-sticky');
+                item.element.style.transform = 'none'; 
+            } 
+            else {
+                item.element.classList.remove('is-sticky');
+                item.element.style.position = 'absolute';
+                item.element.style.transform = 'none';
+            }
+        });
+    });
 </script>
 </html>
