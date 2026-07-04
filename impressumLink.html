@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./src/output.css" rel="stylesheet">
+</head>
+<body class="bg-[#EFECEA]">
+    <div id="header"></div>
+    <div id="contact"></div>
+    <div id="footer"></div>
+</body>
+<script>
+    const loadComponents = (id, url) =>  {
+        fetch(url)
+        .then((response) => response.text())
+        .then((html) => {
+            document.getElementById(id).innerHTML = html;
+        });
+    }
+
+    window.onload = () => {
+        loadComponents('header', 'src/sections/headerGreen.html');
+        loadComponents('contact', 'src/sections/contact.html');
+        loadComponents('footer', 'src/sections/footerGreen.html');
+    }
+</script>
+</html>
