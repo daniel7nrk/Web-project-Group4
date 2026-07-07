@@ -30,6 +30,7 @@
     --text-6xl--line-height: 1;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+    --font-weight-black: 900;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-outfit: "Outfit", sans-serif;
@@ -244,6 +245,15 @@
   .right-\[55\%\] {
     right: 55%;
   }
+  .bottom-0 {
+    bottom: 0;
+  }
+  .bottom-\[10\%\] {
+    bottom: 10%;
+  }
+  .bottom-\[20\%\] {
+    bottom: 20%;
+  }
   .left-0 {
     left: 0;
   }
@@ -343,6 +353,9 @@
   .mr-8 {
     margin-right: calc(var(--spacing) * 8);
   }
+  .mb-0 {
+    margin-bottom: 0;
+  }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
@@ -351,6 +364,12 @@
   }
   .mb-\[20px\] {
     margin-bottom: 20px;
+  }
+  .mb-\[30px\] {
+    margin-bottom: 30px;
+  }
+  .mb-\[40px\] {
+    margin-bottom: 40px;
   }
   .mb-\[100\] {
     margin-bottom: 100;
@@ -591,6 +610,10 @@
     --tw-leading: calc(var(--spacing) * 14);
     line-height: calc(var(--spacing) * 14);
   }
+  .font-black {
+    --tw-font-weight: var(--font-weight-black);
+    font-weight: var(--font-weight-black);
+  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -710,6 +733,11 @@
   .max-lg\:hidden {
     @media (width < 64rem) {
       display: none;
+    }
+  }
+  .max-lg\:w-\[\%\] {
+    @media (width < 64rem) {
+      width: %;
     }
   }
   .max-lg\:w-\[10\%\] {
