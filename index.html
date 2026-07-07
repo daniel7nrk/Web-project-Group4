@@ -18,21 +18,21 @@
     <div id="footer"></div>
 </body>
 <script>
-    const loadComponents = (id, url) =>  {
-        fetch(url)
+    const loadComponents = (id, url) => {
+    return fetch(url)
         .then((response) => response.text())
         .then((html) => {
             document.getElementById(id).innerHTML = html;
         });
-    }
+}
 
-    window.onload = () => {
-        loadComponents('header', 'src/sections/header.html');
-        loadComponents('hero', 'src/sections/hero.html');
-        loadComponents('footer', 'src/sections/footer.html');
-    }
+window.onload = () => {
+    loadComponents('header', 'src/sections/header.html');
+    loadComponents('hero', 'src/sections/hero.html').then(initScrollEffect); // wait for hero to exist
+    loadComponents('footer', 'src/sections/footer.html');
+}
 
-    //scroll script
+function initScrollEffect() {
     const container = document.getElementById('animation-container');
     const stickyBoxes = document.querySelectorAll('.sticky-box');
     const redBox = document.querySelector('.red');
@@ -43,7 +43,6 @@
 
     function cacheMetrics() {
         const containerRect = container.getBoundingClientRect();
-
         metrics = Array.from(stickyBoxes).map(box => {
             const rect = box.getBoundingClientRect();
             return {
@@ -61,10 +60,10 @@
     window.addEventListener('scroll', () => {
         const containerRect = container.getBoundingClientRect();
         const redRect = redBox.getBoundingClientRect();
-        
+
         const greenMetrics = metrics.find(m => m.element === leftGreenBox);
         const greenNormalTop = containerRect.top + (containerRect.height * (greenMetrics?.topPercent || 0));
-        
+
         const redHasHitTop = redRect.top <= 0;
         const leftGreenHitTop = greenNormalTop <= 0;
 
@@ -79,7 +78,7 @@
                     item.element.style.position = 'absolute';
                     item.element.style.transform = `translateY(${redRect.top}px)`;
                 }
-            } 
+            }
             else if (leftGreenHitTop && item.element === yellowBox) {
                 item.element.classList.remove('is-sticky');
                 item.element.style.position = 'absolute';
@@ -88,8 +87,8 @@
             }
             else if (normalElementTop <= 0) {
                 item.element.classList.add('is-sticky');
-                item.element.style.transform = 'none'; 
-            } 
+                item.element.style.transform = 'none';
+            }
             else {
                 item.element.classList.remove('is-sticky');
                 item.element.style.position = 'absolute';
@@ -97,5 +96,6 @@
             }
         });
     });
+}
 </script>
 </html>
