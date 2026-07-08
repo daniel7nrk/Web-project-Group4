@@ -16,15 +16,15 @@
 
 <body class="bg-[#EFECEA]">
     <div class=" fixed top-0 left-0 w-full z-50  ">
-        <nav class="font-outfit flex justify-between  px-10 py-6 justify-center items-center">
+        <nav class="font-outfit flex justify-between  items-center px-6 md:px-10 py-6 w-full gap-4">
             <div class="">
                 <div>DE</div>
                 <div>EN</div>
             </div>
-            <div class="my-5 font-bold text-5xl">
+            <div class="my-5 font-bold text-[32px] md:text-[48] ">
                 <a href="./index.html">Baumeister</a>
             </div>
-            <div class="hidden sm:flex">
+            <div class="hidden lg:flex">
                 <ul class="text-right  font-medium">
                     <li>About</li>
                     <li>Services</li>
@@ -34,9 +34,15 @@
             </div>
 
 
-            <button id="menu-btn" class="block sm:hidden focus:outline-none">
-                <img id="open" src="img/togglmenu.png" alt="Menu" class="w-8 h-8 object-contain" />
-                <img id="close" src="img/Group 5-1.png" alt="MenuX" class=" hidden w-18 h-8 object-contain">
+            <button id="menu-btn" class="block lg:hidden focus:outline-none">
+                <div id="open-icons-wrapper" class="block">
+                    <img id="open" src="img/togglmenu.png" alt="Menu" class="block md:hidden w-8 h-8 object-contain" />
+
+                    <img id="open-ipad" src="img/togglmenu.png" alt="Menu iPad"
+                        class="hidden md:block w-8 h-8 object-contain" />
+                </div>
+
+                <img id="close" src="img/Group 5.png" alt="MenuX" class="hidden w-18 h-8 object-contain">
             </button>
 
         </nav>
@@ -45,20 +51,19 @@
 
 
     <div id="mobile-menu"
-        class="hidden relative w-full bg-[#EFECEA] z-40 sm:hidden flex flex-col font-bold text-4xl items-center ">
-        <a href="#" class="p-4   text-green-500">About</a>
-        <a href="#" class="p-4   text-green-500">Services</a>
-        <a href="#" class="p-4   text-green-500">References</a>
-        <a href="#" class="p-4 z-[99]  text-green-500">Contact</a>
+        class="hidden absolute top-[90px] left-0 w-full lg:hidden flex flex-col font-bold text-4xl items-center gap-6 pt-12 pb-8 pointer-events-none">
+        <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">About</a>
+        <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">Services</a>
+        <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">References</a>
+        <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">Contact</a>
     </div>
 
 
     <div class="font-outfit bg-[#EFECEA] ">
 
         <!-- scrolleffect -->
-        <div id="animation-container"
-            class="relative mx-auto w-full aspect-[16/10] md:aspect-[16/9] mt-40 z-10 mb-12 md:mb-24">
-
+        <div
+            id="animation-container" class="relative mx-auto w-full aspect-[16/10] md:aspect-[16/9] mt-[420px] lg:mt-40 z-10 mb-12 md:mb-24">
             <img src="./img/pinkbox.png" alt="pinkbox" data-top="0.03" class="sticky-box pink absolute h-auto left-[36%] top-[3%] w-[15%] z-10
         max-lg:left-[62%] max-lg:top-[-20%] max-lg:w-[27%]">
 
@@ -94,114 +99,49 @@
         </div>
 
 
-        <div id="lowerContent" class="flex flex-row items-center justify-center gap-50 mb-[200px] mt-[100px]">
-            <div class="text-5xl flex flex-col gap-[50px]">
-                <h1>Brand strategy</h1>
-
-                <h1>Corporate Identity & <br> Website development</h1>
-
-                <h1>SEO & copywriting</h1>
-
-                <h1>Media Relations</h1>
-
-                <h1>Digital marketing & <br> content production</h1>
-
-                <h1>Influencer relations</h1>
-            </div>
-
-            <div class="relative">
-                <img src="./src/img/Vector 5.png" class="w-full h-full object-cover" alt="herobox-green">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <h1 class="text-xl text-center justify-center px-10 text-white gap-3">
-                        Our strategic approach is a collaborative journey that starts with analysing the initial
-                        situation and leads to messages that cut through the information overload. We take care of
-                        content production and maintain relationships with multipliers to position your brand in the
-                        best possible way. From analysis to implementation, we accompany you every step of the way,
-                        ensuring that every measure is effective.
-                    </h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="relative mb-[100px]">
-            <div class="">
-                <img src="./src/img/Rectangle 3.svg" class="w-full h-full" alt="footer-box">
-            </div>
-            <div class="absolute inset-y-50 right-50 text-xl text-right">
-                <h1><a href="https://acehotel.com" target="_blank">Ace Hotel</a></h1>
-                <h1><a href="https://www.armedangels.com/" target="_blank">ARMEDANGELS</a></h1>
-                <h1><a href="https://berlindesignweek.com/" target="_blank">BERLIN DESIGN WEEK</a></h1>
-                <h1><a href="https://berlindesignweek.com/" target="_blank">Berliner Berg</a></h1>
-                <h1><a href="https://www.instagram.com/biteclubberlin/?hl=de" target="_blank">BITE CLUB</a></h1>
-                <h1><a href="https://budweiserbudvar.com/" target="_blank">Budweiser Budvar</a></h1>
-                <h1><a href="https://www.instagram.com/chungkingnoodles/?hl=de" target="_blank">ChungKing Noodles</a>
-                </h1>
-                <h1><a href="https://designpreis-brandenburg.de/" target="_blank">Designpreis Brandenburg</a></h1>
-                <h1><a href="https://www.tk.de/techniker" target="_blank">Die Techniker</a></h1>
-                <h1><a href="https://europeanstreetfood.com/" target="_blank">European Street Food Awards</a></h1>
-                <h1><a href="https://www.grundmann-dentistry.de/" target="_blank">Grundmann Dentistry</a></h1>
-                <h1><a href="https://www.hornbach.de/werkstueck-edition/" target="_blank">HORNBACH Werkstück</a></h1>
-                <h1><a href="https://www.hornbach.de/aktuelles/werkstueck-edition/" target="_blank">HORNBACH macht
-                        Schule</a></h1>
-                <h1><a href="https://ifdesign.com/de/" target="_blank">iF Design</a></h1>
-                <h1><a href="https://kopka.berlin/" target="_blank">Kopka</a></h1>
-                <h1><a href="https://klh-massschuhe.com" target="_blank">KLH Maßschuhe</a></h1>
-                <h1><a href="https://www.motelminibar.com/" target="_blank">Lode & Stijn</a></h1>
-                <h1><a href="https://luya.bio" target="_blank">Luya</a></h1>
-                <h1><a href="https://www.meissen.com/net/" target="_blank">MEISSEN</a></h1>
-                <h1><a href="https://www.motelminibar.com/" target="_blank">Motel Beer & Coffee</a></h1>
-                <h1><a href="https://www.paperandtea.de/" target="_blank">PAPER & TEA</a></h1>
-                <h1><a href="https://www.rocketandbasil.com/" target="_blank">rocket & basil</a></h1>
-                <h1><a href="https://gruppe.seeberger.de/de/" target="_blank">Seeberger Gruppe</a></h1>
-                <h1><a href="https://shioriberlin.com/" target="_blank">Shiori</a></h1>
-                <h1><a href="https://www.verfassungsschutz.de" target="_blank">SPOC Magazin</a></h1>
-                <h1><a href="https://www.stocubo.de/de/" target="_blank">stocubo</a></h1>
-                <h1><a href="https://sturcookware.de/" target="_blank">STUR</a></h1>
-                <h1><a href="https://www.worldofcoffee.org/" target="_blank">World of Coffee</a></h1>
-                <h1><a href="https://yamo.bio/lander" target="_blank">yamo</a></h1>
-            </div>
-        </div>
-    </div>
+        
 
 
+        
+       
 </body>
 
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const menu = document.getElementById("open");
     const closed = document.getElementById("close");
-    const lowercontent = document.getElementById("lowerContent"); //haven't given the class yet
-    const heroText = document.getElementById("herotext")
+    const lowercontent = document.getElementById("lowerContent");
+    const heroText = document.getElementById("herotext");
 
+    // Target the wrapper instead of the two images individually
+    const openIconsWrapper = document.getElementById("open-icons-wrapper");
 
     menuBtn.addEventListener('click', () => {
         const isHidden = mobileMenu.classList.contains("hidden");
+
         if (isHidden) {
-            mobileMenu.classList.remove("hidden");//to show the links
-            heroText.classList.remove('hidden');//hides text in the hero
-            lowercontent.classList.add("max-sm:hidden")//hide on small screen
-            // mobileMenu.classList.toggle("pt-[150px]")
+            mobileMenu.classList.remove("hidden");
 
-            
+            heroText.classList.add("hidden");
 
+            openIconsWrapper.classList.add("hidden");
+            closed.classList.remove("hidden");
 
-
+            if (lowercontent) lowercontent.classList.add("hidden")
         }
         else {
-            mobileMenu.classList.add('hidden');
-            heroText.classList.remove('hidden');
-            lowercontent.classList.remove('max-sm:hidden');
+            mobileMenu.classList.add("hidden");
 
+            heroText.classList.remove("hidden");
+
+            openIconsWrapper.classList.remove("hidden");
+            closed.classList.add("hidden");
+
+            if (lowercontent) lowercontent.classList.remove("hidden")
 
         }
-
-        menu.classList.toggle("hidden");
-        closed.classList.toggle("hidden");
     });
-
-
 
 
 
