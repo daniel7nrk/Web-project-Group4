@@ -9,10 +9,9 @@
 </head>
 <body>
     
-    <div class="font-outfit bg-[#EFECEA] w-full max-lg:mx-auto max-lg:hidden">
+    <div class="font-outfit bg-[#EFECEA] w-full mx-auto max-lg:hidden">
     <div class="mx-auto w-[50%] h-[40%] mb-[200px]">
-        <img src="./src/img/footerbox-red.png" alt="footerbox-red" 
-        class="max-lg:w-[100%] ">
+        <img src="./src/img/footerbox-red.png" alt="footerbox-red">
     </div>
     
     <div class="flex flex-wrap justify-between px-8 font-bold text-xl">
@@ -20,9 +19,12 @@
         Böckhstraße 13 <br>
         10967 Berlin
         </div>
-        <div>hallo@agenturbaumeister.com<br>
-        +49 (0)30 - 490 827 87
-        </div>
+
+        <div class="text-left">
+        <div class="underline">hallo@agenturbaumeister.com</div>
+         <div>+49 (0)30 - 490 827 87</div>
+         </div>
+
         <div>
             LinkedIn
         </div>
@@ -36,14 +38,14 @@
     </div>
 </div>
 
-    <!-- Mobile responsiveness -->
+    <!-- iPad screen responsiveness -->
 
- <div class="font-outfit bg-[#EFECEA] w-full max-lg:mx-auto  lg:hidden">
-    <div class="mx-auto w-[50%] h-[40%] mb-[200px]">
+ <div class="font-outfit bg-[#EFECEA] w-full max-lg:mx-auto  lg:hidden max-sm:hidden">
+    <div class="mx-auto w-[50%] h-[40%] mb-[150px]">
         <img src="./src/img/footerbox-red.png" alt="footerbox-red">
     </div>
     
-    <div class="px-8 font-bold text-xl">
+    <div class="px-8 font-semibold text-lg">
 
         <div class="grid grid-cols-2 mb-[20px]">
 
@@ -60,7 +62,7 @@
     
         </div>
         
-        <div class="flex justify-between gap-2 text-right font-black px-8 mb-[40px]">
+        <div class="flex justify-between font-semibold px-8 mb-[40px]">
             <div id="datenschutz" href="/datenschutz.html" class="text-black">Data privacy</div>
             <div id="impressum" href="/impressumLink.html" class="text-black">Imprint</div>
             <div>LinkedIn</div>
@@ -68,6 +70,42 @@
         </div>
     </div>
 </div>
+
+
+  <!-- Mobile screen responsiveness -->
+
+
+ <div class="font-outfit bg-[#EFECEA] w-full max-lg:mx-auto  md:hidden">
+    <div class="mx-auto w-[85%] h-[40%] mb-[150px]">
+        <img src="./src/img/footerbox-red.png" alt="footerbox-red">
+    </div>
+    
+    <div class="px-8 font-semibold text-sm">
+
+        <div class="grid grid-rows-2 gap-y-10 mb-[50px]">
+
+            <div>Agentur Baumeister <br>
+            Böckhstraße 13 <br>
+            10967 Berlin
+            </div>
+            <div class="text-left">
+              <div class="underline">hallo@agenturbaumeister.com</div>
+               <div>+49 (0)30 - 490 827 87</div>
+             </div>
+            </div>
+            
+    
+        </div>
+        
+        <div class="flex justify-between text-sm font-semibold px-8 mb-[20px]">
+            <div id="datenschutz" href="/datenschutz.html" class="text-black">Data privacy</div>
+            <div id="impressum" href="/impressumLink.html" class="text-black">Imprint</div>
+            <div>LinkedIn</div>
+            <div>Instagram</div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
