@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-=======
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-outfit: "Outfit", sans-serif;
 }
->>>>>>> ed605a78ddda56d310a12fa9b6fab80c70389ece
