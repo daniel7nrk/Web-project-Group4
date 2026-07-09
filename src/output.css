@@ -9,7 +9,6 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-amber-300: oklch(87.9% 0.169 91.605);
-    --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-600: oklch(62.7% 0.194 149.214);
     --color-green-700: oklch(52.7% 0.154 150.069);
@@ -40,6 +39,7 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+    --leading-tight: 1.25;
     --leading-relaxed: 1.625;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -203,6 +203,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .visible {
+    visibility: visible;
+  }
   .absolute {
     position: absolute;
   }
@@ -212,11 +215,17 @@
   .relative {
     position: relative;
   }
+  .sticky {
+    position: sticky;
+  }
   .inset-0 {
     inset: 0;
   }
   .inset-x-0 {
     inset-inline: 0;
+  }
+  .inset-y-50 {
+    inset-block: calc(var(--spacing) * 50);
   }
   .top-0 {
     top: 0;
@@ -247,6 +256,9 @@
   }
   .right-0 {
     right: 0;
+  }
+  .right-50 {
+    right: calc(var(--spacing) * 50);
   }
   .right-\[55\%\] {
     right: 55%;
@@ -364,6 +376,15 @@
   }
   .mt-50 {
     margin-top: calc(var(--spacing) * 50);
+  }
+  .mt-70 {
+    margin-top: calc(var(--spacing) * 70);
+  }
+  .mt-100 {
+    margin-top: calc(var(--spacing) * 100);
+  }
+  .mt-\[-100px\] {
+    margin-top: -100px;
   }
   .mt-\[100px\] {
     margin-top: 100px;
@@ -536,6 +557,9 @@
   .flex-col {
     flex-direction: column;
   }
+  .flex-row {
+    flex-direction: row;
+  }
   .flex-wrap {
     flex-wrap: wrap;
   }
@@ -568,6 +592,9 @@
   }
   .gap-20 {
     gap: calc(var(--spacing) * 20);
+  }
+  .gap-50 {
+    gap: calc(var(--spacing) * 50);
   }
   .gap-\[50px\] {
     gap: 50px;
@@ -645,6 +672,9 @@
   }
   .px-\[10\%\] {
     padding-inline: 10%;
+  }
+  .px-\[40vh\] {
+    padding-inline: 40vh;
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -732,9 +762,17 @@
   .text-\[32px\] {
     font-size: 32px;
   }
+  .leading-14 {
+    --tw-leading: calc(var(--spacing) * 14);
+    line-height: calc(var(--spacing) * 14);
+  }
   .leading-relaxed {
     --tw-leading: var(--leading-relaxed);
     line-height: var(--leading-relaxed);
+  }
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -759,9 +797,6 @@
   }
   .text-\[\#EFECEA\] {
     color: #EFECEA;
-  }
-  .text-amber-300 {
-    color: var(--color-amber-300);
   }
   .text-black {
     color: var(--color-black);
@@ -1080,16 +1115,6 @@
   .md\:text-\[48\] {
     @media (width >= 48rem) {
       color: 48;
-    }
-  }
-  .lg\:mt-10 {
-    @media (width >= 64rem) {
-      margin-top: calc(var(--spacing) * 10);
-    }
-  }
-  .lg\:mt-20 {
-    @media (width >= 64rem) {
-      margin-top: calc(var(--spacing) * 20);
     }
   }
   .lg\:mt-25 {
