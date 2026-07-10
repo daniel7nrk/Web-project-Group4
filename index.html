@@ -26,38 +26,45 @@
             });
     }
 
-    function initMenuEffects() {
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closed = document.getElementById("close");
-        const lowercontent = document.getElementById("lowerContent");
-        const heroText = document.getElementById("herotext");
-        const openIconsWrapper = document.getElementById("open-icons-wrapper");
+   function initMenuEffects() {
+    const menuBtn = document.getElementById('menu-btn');    
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closed = document.getElementById("close");
+    const heroText = document.getElementById("herotext");
+    const openIconsWrapper = document.getElementById("open-icons-wrapper");
+    
+    const sectionsToToggle = document.querySelectorAll(".toggleSection");
 
-        if (!menuBtn || !mobileMenu) {
-            console.warn("Menu elements not found in the loaded templates.");
-            return;
-        }
-
-        menuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains("hidden");
-
-            if (isHidden) {
-                mobileMenu.classList.remove("hidden");
-                if (heroText) heroText.classList.add("hidden");
-                if (openIconsWrapper) openIconsWrapper.classList.add("hidden");
-                if (closed) closed.classList.remove("hidden");
-                if (lowercontent) lowercontent.classList.add("hidden");
-            }
-            else {
-                mobileMenu.classList.add("hidden");
-                if (heroText) heroText.classList.remove("hidden");
-                if (openIconsWrapper) openIconsWrapper.classList.remove("hidden");
-                if (closed) closed.classList.add("hidden");
-                if (lowercontent) lowercontent.classList.remove("hidden");
-            }
-        });
+    if (!menuBtn || !mobileMenu) {
+        console.warn("Menu elements not found in the loaded templates.");
+        return;
     }
+
+    menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains("hidden");
+
+        if (isHidden) {
+            mobileMenu.classList.remove("hidden");
+            if (heroText) heroText.classList.add("hidden");
+            if (openIconsWrapper) openIconsWrapper.classList.add("hidden");
+            if (closed) closed.classList.remove("hidden");
+            
+            sectionsToToggle.forEach(section => {
+                section.classList.add("hidden");
+            });
+        }
+        else {
+            mobileMenu.classList.add("hidden");
+            if (heroText) heroText.classList.remove("hidden");
+            if (openIconsWrapper) openIconsWrapper.classList.remove("hidden");
+            if (closed) closed.classList.add("hidden");
+            
+            sectionsToToggle.forEach(section => {
+                section.classList.remove("hidden");
+            });
+        }
+    });
+}
 
     function initScrollEffect() {
         const container = document.getElementById('animation-container');
