@@ -9,24 +9,28 @@
         </div>
         <div class="hidden lg:flex">
             <ul class="text-right font-medium">
-                <li>About</li>
-                <li>Services</li>
-                <li>References</li>
-                <li>Contact</li>
+                
+                <a href="#about"><li>About</li></a>
+                <a href="#services"><li>Services</li></a>
+                <a href="#reference"><li>References</li></a>
+                <a href="#contact"><li>Contact</li></a>
+                
             </ul>
         </div>
 
         <button id="menu-btn" class="block lg:hidden focus:outline-none">
             <div id="open-icons-wrapper" class="block">
                 <img id="open" src="img/togglmenu.png" alt="Menu" class="block md:hidden w-8 h-8 object-contain" />
-                <img id="open-ipad" src="img/togglmenu.png" alt="Menu iPad" class="hidden md:block w-8 h-8 object-contain" />
+                <img id="open-ipad" src="img/togglmenu.png" alt="Menu iPad"
+                    class="hidden md:block w-8 h-8 object-contain" />
             </div>
             <img id="close" src="img/Group 5.png" alt="MenuX" class="hidden w-18 h-8 object-contain">
         </button>
     </nav>
 </div>
 
-<div id="mobile-menu" class="hidden absolute top-[90px] left-0 w-full lg:hidden flex flex-col font-bold text-4xl items-center gap-2 pt-12 pb-8 pointer-events-none">
+<div id="mobile-menu"
+    class="hidden absolute top-[90px] left-0 w-full lg:hidden flex flex-col font-bold text-4xl items-center gap-2 pt-12 pb-8 pointer-events-none">
     <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">About</a>
     <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">Services</a>
     <a href="#" class="p-4 text-green-500 pointer-events-auto z-[25]">References</a>
