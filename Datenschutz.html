@@ -13,18 +13,36 @@
     <div id="footer"></div>
 </body>
 <script>
-    const loadComponents = (id, url) =>  {
-        fetch(url)
-        .then((response) => response.text())
-        .then((html) => {
-            document.getElementById(id).innerHTML = html;
+    const loadComponents = (id, url) => {
+        return fetch(url)
+            .then((response) => response.text())
+            .then((html) => {
+                document.getElementById(id).innerHTML = html;
+            });
+    }
+
+    function initMenuEffects() {
+        const menuBtn = document.getElementById('menu-btn');    
+        if (!menuBtn) {
+            console.warn("Menu button not found in the loaded templates.");
+            return;
+        }
+
+        menuBtn.addEventListener('click', () => {
+            window.location.href = 'index.html';
         });
     }
 
     window.onload = () => {
-        loadComponents('header', 'src/sections/headerGreen.html');
-        loadComponents('hero', 'src/sections/heroGreen.html');
-        loadComponents('footer', 'src/sections/footerGreen.html');
+        Promise.all([
+            loadComponents('header', 'src/sections/headerGreen.html'),
+            loadComponents('hero', 'src/sections/heroGreen.html'),
+            loadComponents('footer', 'src/sections/footerGreen.html')
+        ]).then(() => {
+            initMenuEffects();
+        }).catch(err => {
+            console.error("Error loading templates: ", err);
+        });
     }
 </script>
 </html>
