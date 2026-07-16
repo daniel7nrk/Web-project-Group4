@@ -321,9 +321,6 @@
   .my-5 {
     margin-block: calc(var(--spacing) * 5);
   }
-  .my-10 {
-    margin-block: calc(var(--spacing) * 10);
-  }
   .my-\[8\%\] {
     margin-block: 8%;
   }
@@ -342,9 +339,6 @@
   .mt-40 {
     margin-top: calc(var(--spacing) * 40);
   }
-  .mt-100 {
-    margin-top: calc(var(--spacing) * 100);
-  }
   .mt-\[100px\] {
     margin-top: 100px;
   }
@@ -354,8 +348,14 @@
   .mt-\[420px\] {
     margin-top: 420px;
   }
+  .mt-\[800px\] {
+    margin-top: 800px;
+  }
   .mr-\[10\%\] {
     margin-right: 10%;
+  }
+  .mb-0 {
+    margin-bottom: 0;
   }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
@@ -456,6 +456,9 @@
   .w-\[85\%\] {
     width: 85%;
   }
+  .w-\[90\%\] {
+    width: 90%;
+  }
   .w-full {
     width: 100%;
   }
@@ -542,13 +545,6 @@
       margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
-  .space-x-4 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
-    }
-  }
   .gap-y-2 {
     row-gap: calc(var(--spacing) * 2);
   }
@@ -584,6 +580,9 @@
   }
   .px-\[10\%\] {
     padding-inline: 10%;
+  }
+  .py-0 {
+    padding-block: 0;
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -877,11 +876,6 @@
       width: 75%;
     }
   }
-  .max-lg\:w-\[85\%\] {
-    @media (width < 64rem) {
-      width: 85%;
-    }
-  }
   .max-lg\:w-\[90\%\] {
     @media (width < 64rem) {
       width: 90%;
@@ -918,11 +912,6 @@
     @media (width < 64rem) {
       --tw-font-weight: var(--font-weight-semibold);
       font-weight: var(--font-weight-semibold);
-    }
-  }
-  .max-md\:mt-30 {
-    @media (width < 48rem) {
-      margin-top: calc(var(--spacing) * 30);
     }
   }
   .max-sm\:top-\[20\%\] {
@@ -1120,11 +1109,6 @@
       line-height: calc(var(--spacing) * 14);
     }
   }
-  .lg\:mt-25 {
-    @media (width >= 64rem) {
-      margin-top: calc(var(--spacing) * 25);
-    }
-  }
   .lg\:mt-40 {
     @media (width >= 64rem) {
       margin-top: calc(var(--spacing) * 40);
@@ -1140,6 +1124,11 @@
       margin-right: 10%;
     }
   }
+  .lg\:mb-10 {
+    @media (width >= 64rem) {
+      margin-bottom: calc(var(--spacing) * 10);
+    }
+  }
   .lg\:flex {
     @media (width >= 64rem) {
       display: flex;
@@ -1148,6 +1137,11 @@
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
+    }
+  }
+  .lg\:w-\[70\%\] {
+    @media (width >= 64rem) {
+      width: 70%;
     }
   }
   .lg\:gap-12 {
@@ -1163,6 +1157,11 @@
   .lg\:px-20 {
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 20);
+    }
+  }
+  .lg\:py-10 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--spacing) * 10);
     }
   }
   .lg\:py-28 {
@@ -1236,11 +1235,6 @@
   inherits: false;
   initial-value: 0;
 }
-@property --tw-space-x-reverse {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
 @property --tw-leading {
   syntax: "*";
   inherits: false;
@@ -1262,7 +1256,6 @@
       --tw-skew-x: initial;
       --tw-skew-y: initial;
       --tw-space-y-reverse: 0;
-      --tw-space-x-reverse: 0;
       --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-tracking: initial;
