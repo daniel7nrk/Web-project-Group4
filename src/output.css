@@ -8,7 +8,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-green-800: oklch(44.8% 0.119 151.328);
     --color-black: #000;
@@ -340,11 +339,11 @@
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
-  .mt-30 {
-    margin-top: calc(var(--spacing) * 30);
-  }
   .mt-40 {
     margin-top: calc(var(--spacing) * 40);
+  }
+  .mt-100 {
+    margin-top: calc(var(--spacing) * 100);
   }
   .mt-\[100px\] {
     margin-top: 100px;
@@ -693,17 +692,8 @@
   .text-\[\#EFECEA\] {
     color: #EFECEA;
   }
-  .text-\[32\] {
-    color: 32;
-  }
-  .text-\[32p\] {
-    color: 32p;
-  }
   .text-black {
     color: var(--color-black);
-  }
-  .text-green-500 {
-    color: var(--color-green-500);
   }
   .text-green-700 {
     color: var(--color-green-700);
@@ -930,6 +920,11 @@
       font-weight: var(--font-weight-semibold);
     }
   }
+  .max-md\:mt-30 {
+    @media (width < 48rem) {
+      margin-top: calc(var(--spacing) * 30);
+    }
+  }
   .max-sm\:top-\[20\%\] {
     @media (width < 40rem) {
       top: 20%;
@@ -1088,34 +1083,9 @@
       padding-inline: calc(var(--spacing) * 16);
     }
   }
-  .md\:px-\[1vh\] {
-    @media (width >= 48rem) {
-      padding-inline: 1vh;
-    }
-  }
-  .md\:px-\[5vh\] {
-    @media (width >= 48rem) {
-      padding-inline: 5vh;
-    }
-  }
-  .md\:px-\[7vh\] {
-    @media (width >= 48rem) {
-      padding-inline: 7vh;
-    }
-  }
-  .md\:px-\[8vh\] {
-    @media (width >= 48rem) {
-      padding-inline: 8vh;
-    }
-  }
   .md\:px-\[10vh\] {
     @media (width >= 48rem) {
       padding-inline: 10vh;
-    }
-  }
-  .md\:px-\[15vh\] {
-    @media (width >= 48rem) {
-      padding-inline: 15vh;
     }
   }
   .md\:pl-6 {
@@ -1223,26 +1193,9 @@
       line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
   }
-  .lg\:text-lg {
-    @media (width >= 64rem) {
-      font-size: var(--text-lg);
-      line-height: var(--tw-leading, var(--text-lg--line-height));
-    }
-  }
-  .lg\:text-xl {
-    @media (width >= 64rem) {
-      font-size: var(--text-xl);
-      line-height: var(--tw-leading, var(--text-xl--line-height));
-    }
-  }
   .lg\:text-\[48px\] {
     @media (width >= 64rem) {
       font-size: 48px;
-    }
-  }
-  .lg\:text-\[48\] {
-    @media (width >= 64rem) {
-      color: 48;
     }
   }
   .xl\:text-4xl {
