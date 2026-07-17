@@ -1,17 +1,19 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/src/img/footerbox-red.png">
-  <link href="./src/output.css" rel="stylesheet">
-      <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/src/img/footerbox-red.png">
+    <link href="./src/output.css" rel="stylesheet">
+    <style>
         .is-sticky {
             position: fixed !important;
             top: 0 !important;
         }
     </style>
 </head>
+
 <body class="bg-[#EFECEA]">
     <div id="header"></div>
     <div id="hero"></div>
@@ -27,45 +29,51 @@
             });
     }
 
-   function initMenuEffects() {
-    const menuBtn = document.getElementById('menu-btn');    
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closed = document.getElementById("close");
-    const heroText = document.getElementById("herotext");
-    const openIconsWrapper = document.getElementById("open-icons-wrapper");
-    
-    const sectionsToToggle = document.querySelectorAll(".toggleSection");
+    function initMenuEffects() {
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closed = document.getElementById("close");
+        const heroText = document.getElementById("herotext");
+        const openIconsWrapper = document.getElementById("open-icons-wrapper");
 
-    if (!menuBtn || !mobileMenu) {
-        console.warn("Menu elements not found in the loaded templates.");
-        return;
+        const sectionsToToggle = document.querySelectorAll(".toggleSection");
+
+        if (!menuBtn || !mobileMenu) {
+            console.warn("Menu elements not found in the loaded templates.");
+            return;
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains("hidden");
+
+            if (isHidden) {
+                mobileMenu.classList.remove("hidden");
+                if (heroText) heroText.classList.add("hidden");
+                if (openIconsWrapper) openIconsWrapper.classList.add("hidden");
+                if (closed) closed.classList.remove("hidden");
+
+                sectionsToToggle.forEach(section => {
+                    section.classList.add("hidden");
+                });
+            }
+            else {
+                mobileMenu.classList.add("hidden");
+                if (heroText) heroText.classList.remove("hidden");
+                if (openIconsWrapper) openIconsWrapper.classList.remove("hidden");
+                if (closed) closed.classList.add("hidden");
+
+                sectionsToToggle.forEach(section => {
+                    section.classList.remove("hidden");
+                });
+            }
+        });
+
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                menuBtn.click();
+            }
+        });
     }
-
-    menuBtn.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.contains("hidden");
-
-        if (isHidden) {
-            mobileMenu.classList.remove("hidden");
-            if (heroText) heroText.classList.add("hidden");
-            if (openIconsWrapper) openIconsWrapper.classList.add("hidden");
-            if (closed) closed.classList.remove("hidden");
-            
-            sectionsToToggle.forEach(section => {
-                section.classList.add("hidden");
-            });
-        }
-        else {
-            mobileMenu.classList.add("hidden");
-            if (heroText) heroText.classList.remove("hidden");
-            if (openIconsWrapper) openIconsWrapper.classList.remove("hidden");
-            if (closed) closed.classList.add("hidden");
-            
-            sectionsToToggle.forEach(section => {
-                section.classList.remove("hidden");
-            });
-        }
-    });
-}
 
     function initScrollEffect() {
         const container = document.getElementById('animation-container');
@@ -111,6 +119,8 @@
                     if (item.element === yellowBox) {
                         const yOffset = containerRect.height * ((greenMetrics?.topPercent || 0) - item.topPercent);
                         item.element.style.transform = `translateY(${yOffset}px)`;
+                        item.element.classList.remove('is-sticky');
+                        item.element.style.position = 'absolute';
                     } else {
                         item.element.style.position = 'absolute';
                         item.element.style.transform = `translateY(${redRect.top}px)`;
@@ -148,4 +158,5 @@
         });
     }
 </script>
+
 </html>
